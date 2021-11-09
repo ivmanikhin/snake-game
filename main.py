@@ -30,7 +30,7 @@ screen.onkeypress(fun=snake.turn_down, key="Down")
 while game_is_on:
     time.sleep(1 / (4 + speed))
     screen.update()
-    snake.step(speed)
+    snake.step()
     game_is_on = (abs(snake.snake[0].xcor()) <= max_screen_x) * (abs(snake.snake[0].ycor()) <= max_screen_y) * (not snake.bite_tail())
     if snake.head.distance(food.pos()) < 10:
         food.new_pos(screen)

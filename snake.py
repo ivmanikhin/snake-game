@@ -1,5 +1,5 @@
 from turtle import Turtle, Screen
-import time
+
 RIGHT = 0
 UP = 90
 LEFT = 180
@@ -31,8 +31,7 @@ class Snake:
         if self.head.heading() in [LEFT, RIGHT]:
             self.head.setheading(DOWN)
 
-    def step(self, speed):
-
+    def step(self):
         for segment in reversed(self.snake[1:]):
             segment.goto(self.snake[self.snake.index(segment) - 1].pos())
         self.head.forward(20)
