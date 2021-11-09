@@ -7,28 +7,35 @@ DOWN = 270
 
 
 class Snake:
-    snake = []
 
     def __init__(self, length=3):
+        self.snake = []
         self.snake.append(Turtle("square"))
         self.head = self.snake[0]
         for segment in range(length):
             self.grow()
 
+    def reset(self):
+        for segment in self.snake[4:]:
+            segment.reset()
+        del self.snake[4:]
+        for segment in self.snake:
+            segment.goto(0, 0)
+
     def turn_left(self):
-        if self.head.heading() in [UP, DOWN]:
+        if self.head.ycor() != self.snake[1].ycor():
             self.head.setheading(LEFT)
 
     def turn_right(self):
-        if self.head.heading() in [UP, DOWN]:
+        if self.head.ycor() != self.snake[1].ycor():
             self.head.setheading(RIGHT)
 
     def turn_up(self):
-        if self.head.heading() in [LEFT, RIGHT]:
+        if self.head.xcor() != self.snake[1].xcor():
             self.head.setheading(UP)
 
     def turn_down(self):
-        if self.head.heading() in [LEFT, RIGHT]:
+        if self.head.xcor() != self.snake[1].xcor():
             self.head.setheading(DOWN)
 
     def step(self):
